@@ -5,7 +5,7 @@ module.exports = (sequelize, DataTypes) => {
   }, {});
   Contact.associate = function(models) {
     // associations can be defined here
-    Contact.hasMany(models.Sms)
+    Contact.hasMany(models.Sms,{onDelete:'CASCADE',foreignKey:'senderId'})
   };
   return Contact;
 };
