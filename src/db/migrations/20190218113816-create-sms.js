@@ -19,6 +19,22 @@ module.exports = {
         allowNull: false,
         type: Sequelize.DATE
       },
+      senderId:{
+        type: Sequelize.INTEGER,
+        references:{
+          model:"Contacts",
+          key:"id"
+        }
+      },
+      receiverId:{
+        type: Sequelize.INTEGER,
+        references:{
+          model:"Contacts",
+          key:"id"
+        }
+      }, status: {
+        type: Sequelize.STRING
+      },
     });
   },
   down: (queryInterface, Sequelize) => {
