@@ -1,8 +1,5 @@
 const models = require("../db/models")
 module.exports = class SmsController{
-    constructor() {
-        this.getAll = this.getAll.bind(this)
-    }
     async getAll(req,res){
        try {
         const sms = await  models.Sms.findAll()
