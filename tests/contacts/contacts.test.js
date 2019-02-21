@@ -42,10 +42,10 @@ describe('Test Contacts Endpoints', () => {
                   
               });
 
-              await db.Contact.destroy({
-                where: {id:'2e77e154-3568-11e9-b210-d663bd873d91'},
-                truncate: false
-              })
+            //   await db.Contact.destroy({
+            //     where: {id:'2e77e154-3568-11e9-b210-d663bd873d91'},
+            //     truncate: false
+            //   })
               done()
             })
     it('should respond with json containing all contacts ',(done) => {
