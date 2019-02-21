@@ -10,7 +10,7 @@
     "test:seed": "npx sequelize db:seed:all",
     "test:migrate": "npx sequelize db:migrate",
     "test:seed:undo": "npx sequelize db:seed:undo:all",
-    "test": "NODE_ENV=test npx jest --coverage  --detectOpenHandles"
+    "test:coverage": "NODE_ENV=test npx jest --coverage  --forceExit"
   },
   "dependencies": {
     "body-parser": "^1.18.3",
