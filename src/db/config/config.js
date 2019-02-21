@@ -1,5 +1,5 @@
 require('dotenv').config()
-const {DB_USERNAME,DB_DIALECT,DB_NAME,DB_PASSWORD,DB_HOST} = process.env
+const {DB_USERNAME,DB_DIALECT,DB_NAME,TEST_DB_NAME,DB_PASSWORD,DB_HOST} = process.env
 module.exports = {
   development: {
     username:DB_USERNAME,
@@ -11,7 +11,7 @@ module.exports = {
   test: {
     username: DB_USERNAME,
     password: null,
-    database: "sms_api_test",
+    database: TEST_DB_NAME,
     host: "127.0.0.1",
     dialect: DB_DIALECT
   },
