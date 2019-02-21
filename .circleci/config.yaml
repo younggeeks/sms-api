@@ -1,0 +1,28 @@
+version: 2
+jobs:
+  build:
+    working_directory: ~/workspace
+    steps:
+    - checkout
+    - run:
+        name: Download Code Climate Test Reporter
+        command: |
+          mkdir -p tmp/
+          curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ./tmp/cc-test-reporter
+          chmod +x ./tmp/cc-test-reporter
+    - run:
+        name: Install dependencies
+        command: yarn install
+    - run:
+        name: Run  tests
+        command: yarn run test:coverage
+    - run:
+        name: Push Test coverage to Codeclimate
+        command: |
+          ./tmp/cc-test-reporter format-coverage -t lcov -o tmp/codeclimate.json coverage/lcov.info
+          ./tmp/cc-test-reporter upload-coverage -i tmp/codeclimate.json
+workflows:
+  version: 2
+  build-deploy:
+    jobs:
+    - build
