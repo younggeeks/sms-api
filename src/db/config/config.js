@@ -9,11 +9,11 @@ module.exports = {
     dialect: DB_DIALECT
   },
   test: {
-    username: "root",
+    username: DB_USERNAME,
     password: null,
-    database: "database_test",
+    database: "sms_api_test",
     host: "127.0.0.1",
-    dialect: "mysql"
+    dialect: DB_DIALECT
   },
   production: {
     username: "root",

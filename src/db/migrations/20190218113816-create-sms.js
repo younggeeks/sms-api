@@ -4,9 +4,9 @@ module.exports = {
     return queryInterface.createTable('Sms', {
       id: {
         allowNull: false,
-        autoIncrement: true,
+        autoIncrement: false,
         primaryKey: true,
-        type: Sequelize.INTEGER
+        type: Sequelize.UUID
       },
       message: {
         type: Sequelize.STRING
@@ -20,14 +20,14 @@ module.exports = {
         type: Sequelize.DATE
       },
       senderId:{
-        type: Sequelize.INTEGER,
+        type: Sequelize.UUID,
         references:{
           model:"Contacts",
           key:"id"
         }
       },
       receiverId:{
-        type: Sequelize.INTEGER,
+        type: Sequelize.UUID,
         references:{
           model:"Contacts",
           key:"id"

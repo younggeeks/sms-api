@@ -26,3 +26,11 @@ validateContact: (req,res,next)=>{
     next();
 }
 }
+
+
+// const validationRules = {
+//     username: [ 'required', 'min:4', 'max:5'],
+//     password: [ 'max:4', regex('\^\')']
+// }
+
+//app.post("/samaki",validate(validationRules), (req,res,next)=>{})

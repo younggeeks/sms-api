@@ -1,6 +1,10 @@
 'use strict';
 module.exports = (sequelize, DataTypes) => {
   const Sms = sequelize.define('Sms', {
+    id:{
+      type:DataTypes.UUID,
+      primaryKey: true
+    },
     message: DataTypes.STRING,
     status: DataTypes.STRING
   }, {});

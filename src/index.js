@@ -24,10 +24,11 @@ app.get("/contacts", contactsController.getContacts)
 app.get("/contacts/:id", contactsController.getSingleContact)
 app.post("/contacts",validateContact,contactsController.insertContact)
 
-
+let server;
 models.sequelize.sync({force:false}).then(()=>{
-    app.listen( PORT,()=>{
+   server = app.listen( PORT,()=>{
         console.log("Up and Running at ", PORT)
     })
 })
 
+module.exports = app
