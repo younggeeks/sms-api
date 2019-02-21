@@ -28,9 +28,6 @@ jobs:
         name: Install dependencies
         command: yarn install
     - run:
-        name: Create DB USER
-        command: bash db.sh
-    - run:
         name: Run  tests
         command: yarn run test:coverage
     - run:
