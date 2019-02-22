@@ -7,8 +7,10 @@
   "license": "MIT",
   "scripts": {
     "dev": "nodemon  -r dotenv/config ./src/index.js ",
+    "start": "node  -r dotenv/config ./src/index.js ",
     "test:seed": "npx sequelize db:seed:all",
     "test:migrate": "npx sequelize db:migrate",
+    "test:migrate:undo": "npx sequelize db:migrate:undo:all",
     "test:seed:undo": "npx sequelize db:seed:undo:all",
     "test:coverage": "NODE_ENV=test npx jest --coverage  --forceExit"
   },
