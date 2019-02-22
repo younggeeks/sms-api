@@ -13,6 +13,12 @@ SMS Management API
     Contacts Management
     Messages Management
 
+## Documentation
+### THIS API IS FULLY DOCUMENTED USING  
+![Swagger Documentation](https://swagger.io/swagger/media/assets/images/swagger_logo.svg)
+
+* [DOCUMENTATION ](http://localhost:9000/api-docs)  http://localhost:9000/api-docs
+
 
 ## Installation
 ```
