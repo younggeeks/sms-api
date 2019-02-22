@@ -1,12 +1,15 @@
 "use strict";
 const faker = require("faker")
+const uuidv3 = require('uuid/v1');
+
+console.log()
 module.exports = {
   up: (queryInterface, Sequelize) => {
     return queryInterface.bulkInsert(
       "Contacts",
       [
         {
-          id:"2e77e154-3568-11e9-b210-d663bd873d93",
+          id:1,
           name: "Rodgers Kishagha",
           phone: "0792847684",
           createdAt: faker.date.past(),
@@ -14,28 +17,28 @@ module.exports = {
           
         },
         {
-          id:"2e77e406-3568-11e9-b210-d663bd873d93",
+          id:2,
           name: "Michael Owiri",
           phone: "0892222",
           createdAt: faker.date.past(),
           updatedAt: faker.date.past()
         },
         {
-          id:"2e77e55a-3568-11e9-b210-d663bd873d93",
+          id:3,
           name: "Obiero Samuel",
           phone: "0388383883",
           createdAt: faker.date.past(),
           updatedAt: faker.date.past()
         },
         {
-          id:"2e77e6a4-3568-11e9-b210-d663bd873d93",
+          id:4,
           name: "Akindiva Joel",
           phone: "0093832",
           createdAt: faker.date.past(),
           updatedAt: faker.date.past()
         },
         {
-          id:"2e77e7e4-3568-11e9-b210-d663bd873d93",
+          id:5,
           name: "Muriuki Mutoro",
           phone: "09394884",
           createdAt: faker.date.past(), 

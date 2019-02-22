@@ -9,13 +9,6 @@ const ContactsController = require("../../src/controllers/ContactsController.js"
 const {validateMessage,validateContact} = require("../../src/db/helpers/validation")
 const db = require("../../src/db/models")
 describe('Test Contacts Endpoints', () => {
-  let req = { 
-        body: { // for testing create vehicle
-            manufacturer: "Toyota",
-            name: "Camry",
-            model: "2018",
-        }
-  }
   beforeEach(() => {
     res = {
                 json: sinon.spy(),
@@ -56,24 +49,36 @@ describe('Test Contacts Endpoints', () => {
         },10000)
     });
     it('should respond with 404 when searching for contact not existing',(done) => {
-        return request(app).get("/contacts/1fcc9a76-35b0-11e9-b210-d663bd873d93").then(response => {
+        return request(app).get("/contacts/32").then(response => {
             expect(response.statusCode).toBe(404)
             done()
         },10000)
     });
     });
     it('should respond with 404 when searching for contact not existing',(done) => {
-        return request(app).get("/contacts/1fcc9a76-35b0-11e9-b210-d663bd873d93").then(response => {
+        return request(app).get("/contacts/42").then(response => {
             expect(response.statusCode).toBe(404)
             done()
         },10000)
     });
     it('should respond with 404 when searching for contact not existing',(done) => {
-        return request(app).get("/contacts/1fcc9a76-35b0-11e9-b210-d663bd873d93").then(response => {
+        return request(app).get("/contacts/432").then(response => {
             expect(response.statusCode).toBe(404)
             done()
         },10000)
     });
+    it('should respond with 404 when deleting  contact not existing',(done) => {
+        return request(app).delete("/contacts/432").then(response => {
+            expect(response.statusCode).toBe(404)
+            done()
+        },10000)
+    });
+    // it('should respond with 200 when deleting  contact is existing',(done) => {
+    //     return request(app).delete("/contacts/1000").then(response => {
+    //         expect(response.statusCode).toBe(200)
+    //         done()
+    //     },10000)
+    // });
     //  it('Create new Contact ', (function () {
     //         expectedResult = req.body
     //         controller = new ContactsController()
@@ -96,20 +101,20 @@ describe('Test Contacts Endpoints', () => {
    
        let missingPhone = {
         "name": "dummy",
-        id:"2e77e154-3568-11e9-b210-d663bd873d91",
+        id:19,
     }
    
        let missingName = {
         "phone": "02938439854899845",
-        id:"2e77e154-3568-11e9-b210-d663bd873d91",
+        id:24,
     }
     const correctData = {
-        id:"2e77e154-3568-11e9-b210-d663bd873d91",
+        id:1000,
       name:"awesomeness",
       phone:"5900893540984598009"
     }
     const incorrectData = {
-        id:"21e77e154-3568-11e9-b210-d663bd873d91",
+        id:3,
       name:"awesomeness",
       phone:"5900893540984598009"
     }
@@ -165,36 +170,36 @@ describe('Test Contacts Endpoints', () => {
     describe('SMS TESTS', () => {
       const fakeMessage = {
         status:"849",
-        id:"2e77e154-3568-11e9-b210-d663bd873d91",
+        id:29,
       }
       const fakeStatus = {
         "message":"this is awessome",
-        id:"2e77e154-3568-11e9-b210-d663bd873d91",
+        id:433,
       }
 
       const missingSenderId = {
         status:"unread",
         message:"this is awe",
-        id:"2e77e154-3568-11e9-b210-d663bd873d91",
+        id:65,
       }
       const missingReceiverId = {
         status:"unread",
         message:"this is awe",
-        senderId:"sklfja",
-        id:"2e77e154-3568-11e9-b210-d663bd873d91",
+        senderId:1000,
+        id:65,
       }
       const correctMessage = {
         status:"unread",
         message:"this is awe",
-        senderId:"2e77e154-3568-11e9-b210-d663bd873d91",
-        receiverId:"2e77e154-3568-11e9-b210-d663bd873d91",
-        id:"2e77e154-3568-11e9-b210-d663bd873d91",
+        senderId:1000,
+        receiverId:1000,
+        id:10001,
       }
       const correctWithoutStatus = {
         message:"this is awe",
-        senderId:"2e77e154-3568-11e9-b210-d663bd873d91",
-        receiverId:"2e77e154-3568-11e9-b210-d663bd873d91",
-        id:"2e77e154-3568-11e9-b210-d663bd873d92",
+        senderId:1000,
+        receiverId:1000,
+        id:10003,
       }
         it('respond with 400 Bad request with proper error message when message field is missing', function (done) {
         request(app)
@@ -270,27 +275,33 @@ describe('Test Contacts Endpoints', () => {
     });
 
         it('should respond with 404 when bad id is provided single message ',(done) => {
-        return request(app).get("/messages/826a9390-35b0-11e9-b210-d663bd873d93").then(response => {
-            expect(response.body.message).toBe("Sms with ID 826a9390-35b0-11e9-b210-d663bd873d93 was not found")
+        return request(app).get("/messages/32").then(response => {
+            expect(response.body.message).toBe("Sms with ID 32 was not found")
             done()
         },10000)
     });
 
         it('should respond with 404 when bad id is provided single message ',(done) => {
-        return request(app).get("/messages/sent/826a9390-35b0-11e9-b210-d663bd873d93").then(response => {
+        return request(app).get("/messages/sent/54").then(response => {
             expect(response.statusCode).toBe(404)
-            expect(response.body.message).toBe("No sms from a sender with id 826a9390-35b0-11e9-b210-d663bd873d93")
+            expect(response.body.message).toBe("No sms from a sender with id 54")
             done()
         },10000)
     });
         it('should respond with 404 when bad id is provided single message ',(done) => {
-        return request(app).get("/messages/received/826a9390-35b0-11e9-b210-d663bd873d93").then(response => {
+        return request(app).get("/messages/received/65").then(response => {
+            expect(response.statusCode).toBe(404)
+            done()
+        },10000)
+    });
+        it('Deletion should respond with 404 when bad id is provided single message ',(done) => {
+        return request(app).delete("/messages/42").then(response => {
             expect(response.statusCode).toBe(404)
             done()
         },10000)
     });
         it('should respond with 200 when correct id is provided ',(done) => {
-        return request(app).get("/messages/received/2e77e154-3568-11e9-b210-d663bd873d91").then(response => {
+        return request(app).get("/messages/received/1000").then(response => {
             expect(response.statusCode).toBe(200)
             done()
         },10000)

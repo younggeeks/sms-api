@@ -6,7 +6,7 @@ module.exports = {
         allowNull: false,
         autoIncrement: false,
         primaryKey: true,
-        type: Sequelize.UUID
+        type: Sequelize.INTEGER
       },
       message: {
         type: Sequelize.STRING
@@ -20,14 +20,16 @@ module.exports = {
         type: Sequelize.DATE
       },
       senderId:{
-        type: Sequelize.UUID,
+        type: Sequelize.INTEGER,
+        onDelete: 'CASCADE',
         references:{
           model:"Contacts",
           key:"id"
         }
       },
       receiverId:{
-        type: Sequelize.UUID,
+        type: Sequelize.INTEGER,
+        onDelete: 'CASCADE',
         references:{
           model:"Contacts",
           key:"id"

@@ -24,4 +24,17 @@ module.exports = class ContactsController{
             console.log("error")
            }
     }
+
+    async deleteContact(req,res){
+        try {
+            const {id} = req.params
+            const del = await models.Contact.destroy({where:{id}})
+            if(del<=0){
+                return res.status(404).json({message:' Deletion failed, contact was not found'})
+            }
+            return res.status(200).json({message:"successfully deleted"})
+        } catch (error) {
+            console.log("the error is ", error)
+        }
+    }
 }

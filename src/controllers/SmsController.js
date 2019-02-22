@@ -28,7 +28,6 @@ module.exports = class SmsController {
         where: { senderId: id },
         raw: true
       });
-      console.log('te zms ', !!sms)
       if (sms.length>0) return res.status(200).json(sms);
       return res.status(404).json({ message: `No sms from a sender with id ${id}` });
       
@@ -54,4 +53,17 @@ module.exports = class SmsController {
     const saved = await models.Sms.create(req.body);
    return res.status(201).json(saved);
   }
+
+  async deleteMessage(req,res){
+    try {
+        const {id} = req.params
+        const del = await models.Sms.destroy({where:{id}})
+        if(del<=0){
+            return res.status(404).json({message:' Deletion failed, message was not found'})
+        }
+        return res.status(200).json({message:"successfully deleted"})
+    } catch (error) {
+        console.log("the error is ", error)
+    }
+}
 };

@@ -15,6 +15,7 @@ app.use(bodyParser({json:true}))
 //messages endpoint
 app.get("/messages", smsController.getAll)
 app.get("/messages/:id", smsController.getOne)
+app.delete("/messages/:id", smsController.deleteMessage)
 app.get("/messages/sent/:id",smsController.getAllBySender)
 app.get("/messages/received/:id",smsController.getAllByRecepient)
 app.post("/messages",validateMessage,smsController.sendNewMessage)
@@ -22,6 +23,7 @@ app.post("/messages",validateMessage,smsController.sendNewMessage)
 //contacts endpoint
 app.get("/contacts", contactsController.getContacts)
 app.get("/contacts/:id", contactsController.getSingleContact)
+app.delete("/contacts/:id", contactsController.deleteContact)
 app.post("/contacts",validateContact,contactsController.insertContact)
 
 let server;
