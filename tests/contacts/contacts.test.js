@@ -44,7 +44,7 @@ describe('Test Contacts Endpoints', () => {
     it('should respond with json containing all contacts ',(done) => {
         return request(app).get("/contacts").then(response => {
             expect(response.statusCode).toBe(200)
-            expect(Object.keys(response.body).length).toBe(6)
+            expect(Object.keys(response.body).length).toBe(5)
             done()
         },10000)
     });
@@ -290,6 +290,12 @@ describe('Test Contacts Endpoints', () => {
     });
         it('should respond with 404 when bad id is provided single message ',(done) => {
         return request(app).get("/messages/received/65").then(response => {
+            expect(response.statusCode).toBe(404)
+            done()
+        },10000)
+    });
+        it('Deletion should respond with 404 when bad id is provided single message ',(done) => {
+        return request(app).delete("/messages/42").then(response => {
             expect(response.statusCode).toBe(404)
             done()
         },10000)

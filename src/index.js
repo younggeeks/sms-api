@@ -15,6 +15,7 @@ app.use(bodyParser({json:true}))
 //messages endpoint
 app.get("/messages", smsController.getAll)
 app.get("/messages/:id", smsController.getOne)
+app.delete("/messages/:id", smsController.deleteMessage)
 app.get("/messages/sent/:id",smsController.getAllBySender)
 app.get("/messages/received/:id",smsController.getAllByRecepient)
 app.post("/messages",validateMessage,smsController.sendNewMessage)
