@@ -40,7 +40,7 @@ $ npx sequelize db:seed:all
 
 $ yarn start
 ```
-To see your application, access this url in your browser: http://localhost:3000
+To see your application, access this url in your browser: http://localhost:9000
 
 ### Tech used to make this:
 
