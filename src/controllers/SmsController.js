@@ -28,7 +28,6 @@ module.exports = class SmsController {
         where: { senderId: id },
         raw: true
       });
-      console.log('te zms ', !!sms)
       if (sms.length>0) return res.status(200).json(sms);
       return res.status(404).json({ message: `No sms from a sender with id ${id}` });
       

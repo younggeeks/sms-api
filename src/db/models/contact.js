@@ -2,7 +2,7 @@
 module.exports = (sequelize, DataTypes) => {
   const Contact = sequelize.define('Contact', {
     id:{
-      type:DataTypes.UUID,
+      type:DataTypes.INTEGER,
       primaryKey: true
     },
     name: DataTypes.STRING,
@@ -10,7 +10,7 @@ module.exports = (sequelize, DataTypes) => {
   }, {});
   Contact.associate = function(models) {
     // associations can be defined here
-    Contact.hasMany(models.Sms,{onDelete:'CASCADE',foreignKey:'senderId'})
+    Contact.hasMany(models.Sms,{onDelete:'CASCADE',foreignKey:'senderId',hooks:true})
   };
   return Contact;
 };

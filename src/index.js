@@ -22,6 +22,7 @@ app.post("/messages",validateMessage,smsController.sendNewMessage)
 //contacts endpoint
 app.get("/contacts", contactsController.getContacts)
 app.get("/contacts/:id", contactsController.getSingleContact)
+app.delete("/contacts/:id", contactsController.deleteContact)
 app.post("/contacts",validateContact,contactsController.insertContact)
 
 let server;
