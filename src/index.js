@@ -4,13 +4,16 @@ const models = require("./db/models")
 const SmsController = require("./controllers/SmsController")
 const ContactsController = require("./controllers/ContactsController")
 const bodyParser = require("body-parser")
+const swaggerUi = require('swagger-ui-express');
+const swaggerDocument = require('../src/db/helpers/schema.json');
 const {validateMessage,validateContact} = require("./db/helpers/validation")
 const {PORT} = process.env 
 const smsController = new SmsController()
 const contactsController = new ContactsController()
 
+ 
 app.use(bodyParser({json:true}))
-
+app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 
 //messages endpoint
 app.get("/messages", smsController.getAll)

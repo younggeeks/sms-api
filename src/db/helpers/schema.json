@@ -1,0 +1,399 @@
+{
+    "swagger": "2.0",
+    "info": {
+      "description": "SMS MANAGEMENT API",
+      "version": "1.0.0",
+      "title": "SMS Management API",
+      "contact": {
+        "email": "younggeeks101@gmail.com"
+      },
+      "license": {
+        "name": "Apache 2.0",
+        "url": "http://www.apache.org/licenses/LICENSE-2.0.html"
+      }
+    },
+    "host": "localhost",
+    "basePath": "/",
+    "tags": [
+      {
+        "name": "Messages",
+        "description": "Messages Management"
+      },
+      {
+        "name": "Contacts",
+        "description": "Contacts Management"
+      }
+    ],
+    "schemes": [
+      "https",
+      "http"
+    ],
+    "paths": {
+      "/messages": {
+        "post": {
+          "tags": [
+            "Messages"
+          ],
+          "summary": "Send new Message",
+          "description": "Add new sms to the DB",
+          "operationId": "sendNewMessage",
+          "consumes": [
+            "application/json"
+          ],
+          "produces": [
+            "application/json"
+          ],
+          "parameters": [
+            {
+              "in": "body",
+              "name": "body",
+              "description": "New SMS Object",
+              "required": true,
+              "schema": {
+                "$ref": "#/definitions/SMS"
+              }
+            }
+          ],
+          "responses": {
+            "201": {
+              "description": "Message  sent"
+            },
+            "400": {
+              "description": "Invalid input"
+            }
+          }
+        },
+        "get": {
+          "tags": [
+            "Messages"
+          ],
+          "summary": "Get All Messages",
+          "description": "Get all messages regardless of the sender",
+          "operationId": "getAll",
+          "produces": [
+            "application/json"
+          ],
+          "responses": {
+            "200": {
+              "description": "successful operation",
+              "schema": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/definitions/SMS"
+                }
+              }
+            }
+          }
+        }
+      },
+      "/messages/{id}": {
+        "get": {
+          "tags": [
+            "Messages"
+          ],
+          "summary": "Get single SMS",
+          "description": "",
+          "operationId": "getOne",
+          "produces": [
+            "application/json"
+          ],
+          "parameters": [
+            {
+              "name": "id",
+              "in": "path",
+              "description": "id of the message to retrieve ",
+              "required": true,
+              "type": "integer"
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "successful operation",
+              "schema": {
+                "$ref": "#/definitions/SMS"
+              }
+            },
+            "400": {
+              "description": "Invalid id supplied"
+            },
+            "404": {
+              "description": "SMS not found"
+            }
+          }
+        },
+        "delete": {
+          "tags": [
+            "Messages"
+          ],
+          "summary": "Delete sms",
+          "description": "Delete Single Message",
+          "operationId": "deleteMessage",
+          "produces": [
+            "application/json"
+          ],
+          "parameters": [
+            {
+              "name": "id",
+              "in": "path",
+              "description": "ID of the message to be deleted",
+              "required": true,
+              "type": "integer"
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "operation successful"
+            },
+            "404": {
+              "description": "Invalid id supplied"
+            }
+          }
+        }
+      },
+      "/messages/sent/{id}": {
+        "get": {
+          "tags": [
+            "Messages"
+          ],
+          "summary": "Get All messages from a specific sender",
+          "description": "",
+          "operationId": "getAllBySender",
+          "produces": [
+            "application/json"
+          ],
+          "parameters": [
+            {
+              "name": "id",
+              "in": "path",
+              "description": "id of the message to retrieve ",
+              "required": true,
+              "type": "integer"
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "successful operation",
+              "schema": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/definitions/SMS"
+                }
+              }
+            },
+            "400": {
+              "description": "Invalid id supplied"
+            },
+            "404": {
+              "description": "SMS not found"
+            }
+          }
+        }
+      },
+      "/messages/received/{id}": {
+        "get": {
+          "tags": [
+            "Messages"
+          ],
+          "summary": "Get all Messages sent to a specific receipient",
+          "description": "",
+          "operationId": "getAllByRecepient",
+          "produces": [
+            "application/json"
+          ],
+          "parameters": [
+            {
+              "name": "id",
+              "in": "path",
+              "description": "id of the contact to retrieve ",
+              "required": true,
+              "type": "integer"
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "successful operation",
+              "schema": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/definitions/SMS"
+                }
+              }
+            },
+            "400": {
+              "description": "Invalid id supplied"
+            },
+            "404": {
+              "description": "SMS not found"
+            }
+          }
+        }
+      },
+      "/contacts": {
+        "post": {
+          "tags": [
+            "Contacts"
+          ],
+          "summary": "Add new Contact",
+          "description": "",
+          "operationId": "insertContact",
+          "consumes": [
+            "application/json"
+          ],
+          "produces": [
+            "application/json"
+          ],
+          "parameters": [
+            {
+              "in": "body",
+              "name": "body",
+              "description": "New CONTACT Object",
+              "required": true,
+              "schema": {
+                "$ref": "#/definitions/Contact"
+              }
+            }
+          ],
+          "responses": {
+            "201": {
+              "description": "Contact Created"
+            },
+            "400": {
+              "description": "Invalid input"
+            }
+          }
+        },
+        "get": {
+          "tags": [
+            "Contacts"
+          ],
+          "summary": "Get All Contacts",
+          "description": "Get all contacts in the system",
+          "operationId": "getContacts",
+          "produces": [
+            "application/json"
+          ],
+          "responses": {
+            "200": {
+              "description": "successful operation",
+              "schema": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/definitions/Contact"
+                }
+              }
+            }
+          }
+        }
+      },
+      "/contacts/{id}": {
+        "get": {
+          "tags": [
+            "Contacts"
+          ],
+          "summary": "Get single Contact",
+          "description": "",
+          "operationId": "getSingleContact",
+          "produces": [
+            "application/json"
+          ],
+          "parameters": [
+            {
+              "name": "id",
+              "in": "path",
+              "description": "id of the contact to retrieve ",
+              "required": true,
+              "type": "integer"
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "successful operation",
+              "schema": {
+                "$ref": "#/definitions/Contact"
+              }
+            },
+            "400": {
+              "description": "Invalid id supplied"
+            },
+            "404": {
+              "description": "Contact not found"
+            }
+          }
+        },
+        "delete": {
+          "tags": [
+            "Contacts"
+          ],
+          "summary": "Delete Contact",
+          "description": "Delete Single Contact with all messages related to it",
+          "operationId": "deleteContact",
+          "produces": [
+            "application/json"
+          ],
+          "parameters": [
+            {
+              "name": "id",
+              "in": "path",
+              "description": "ID of the contadct to be deleted",
+              "required": true,
+              "type": "integer"
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "operation successful"
+            },
+            "404": {
+              "description": "Invalid id supplied"
+            }
+          }
+        }
+      }
+    },
+    "definitions": {
+      "SMS": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "message": {
+            "type": "string"
+          },
+          "senderId": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "receiverId": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "status": {
+            "type": "string",
+            "description": "SMS Status",
+            "enum": [
+              "read",
+              "unread"
+            ]
+          }
+        }
+      },
+      "Contact": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "name": {
+            "type": "string"
+          },
+          "phone": {
+            "type": "string"
+          }
+        }
+      }
+    }
+  }
+  

@@ -50,8 +50,13 @@ module.exports = class SmsController {
   }
   async sendNewMessage(req, res) {
     console.log(req.body.status);
-    const saved = await models.Sms.create(req.body);
-   return res.status(201).json(saved);
+    try {
+      const saved = await models.Sms.create(req.body);
+      return res.status(201).json(saved);
+    } catch (error) {
+      return res.status(400).json({message:`${error.message}`})
+    }
+   
   }
 
   async deleteMessage(req,res){
