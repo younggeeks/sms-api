@@ -18,8 +18,6 @@ LIVE VERSION https://aqueous-hollows-73651.herokuapp.com
 ### THIS API IS FULLY DOCUMENTED USING  
 ![Swagger Documentation](https://swagger.io/swagger/media/assets/images/swagger_logo.svg)
 
-* [DOCUMENTATION ](https://aqueous-hollows-73651.herokuapp.com)  http://localhost:9000/api-docs
-
 
 ## Installation
 ```
