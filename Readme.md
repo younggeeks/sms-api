@@ -1,6 +1,7 @@
 [![CircleCI](https://circleci.com/gh/younggeeks/sms-api/tree/master.svg?style=svg)](https://circleci.com/gh/younggeeks/sms-api/tree/master)  [![Test Coverage](https://api.codeclimate.com/v1/badges/188c219a401b8aa05ecf/test_coverage)](https://codeclimate.com/github/younggeeks/sms-api/test_coverage)
 
 SMS Management API 
+LIVE VERSION https://aqueous-hollows-73651.herokuapp.com
 
 ## Table of Contents
 
@@ -17,7 +18,7 @@ SMS Management API
 ### THIS API IS FULLY DOCUMENTED USING  
 ![Swagger Documentation](https://swagger.io/swagger/media/assets/images/swagger_logo.svg)
 
-* [DOCUMENTATION ](http://localhost:9000/api-docs)  http://localhost:9000/api-docs
+* [DOCUMENTATION ](https://aqueous-hollows-73651.herokuapp.com)  http://localhost:9000/api-docs
 
 
 ## Installation
