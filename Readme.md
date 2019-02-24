@@ -1,7 +1,7 @@
 [![CircleCI](https://circleci.com/gh/younggeeks/sms-api/tree/master.svg?style=svg)](https://circleci.com/gh/younggeeks/sms-api/tree/master)  [![Test Coverage](https://api.codeclimate.com/v1/badges/188c219a401b8aa05ecf/test_coverage)](https://codeclimate.com/github/younggeeks/sms-api/test_coverage)
 
 SMS Management API 
-LIVE VERSION https://aqueous-hollows-73651.herokuapp.com
+LIVE VERSION https://aqueous-hollows-73651.herokuapp.com/api-docs
 
 ## Table of Contents
 
